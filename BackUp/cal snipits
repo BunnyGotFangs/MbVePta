@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>MVP-INSIGHT</title>
+
+<script src="js/daypilot/daypilot-all.min.js" type="text/javascript"></script> 
+<link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css" />
+
+</head>
+
+<body>
+<div id="dp"></div> 
+</body>
+
+
+<script type="text/javascript">
+  var dp = new DayPilot.Calendar("dp");
+  dp.viewType = "Week";
+  dp.init();
+</script>
+
+
+
+[
+  {
+    "id":"1",
+    "text":"Calendar Event 1",
+    "start":"2018-02-25T10:30:00",
+    "end":"2018-02-25T16:30:00"
+  },
+  {
+    "id":"2",
+    "text":"Calendar Event 2",
+    "start":"2018-02-24T09:00:00",
+    "end":"2018-02-24T14:30:00"
+  },
+  {
+    "id":"3",
+    "text":"Calendar Event 3",
+    "start":"2018-02-27T12:00:00",
+    "end":"2018-02-27T16:00:00"
+  }
+]
+
+public ActionResult Events(DateTime? start, DateTime? end)
+{
+
+  var events = from ev in db.Events.AsEnumerable() where !(ev.end <= start || ev.start >= end) select ev;
+
+  var result = events
+  .Select(e => new JsonEvent() { 
+      start = e.start.ToString("s"),
+      end = e.end.ToString("s"),
+      text = e.name,
+      id = e.id.ToString()
+  })
+  .ToList();
+
+  return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+}
+
+dp.onEventMoved = function (args) {
+  $.post("backend_move.php",   // use "backend/move" for ASP.NET MVC
+    {
+        id: args.e.id(),
+        newStart: args.newStart.toString(),
+        newEnd: args.newEnd.toString()
+    }, 
+    function() {
+        console.log("Moved.");
+    });
+};
+
+public ActionResult Move(int id, string newStart, string newEnd)
+{
+  var toBeResized = (from ev in db.Events where ev.id == id select ev).First();
+  toBeResized.start = Convert.ToDateTime(newStart);
+  toBeResized.end = Convert.ToDateTime(newEnd);
+  db.SubmitChanges();
+
+  return new JsonResult { Data = new Dictionary<string, object> { { "id", toBeResized.id } } };
+}
+
+<script type="text/javascript">
+  var dp = new DayPilot.Calendar("dp");
+  dp.viewType = "Week";
+  dp.theme = "calendar_transparent";
+  dp.init();
+</script>
+
+<div id="dp"></div>
+
+<script type="text/javascript">
+  var dp = new DayPilot.Month("dp");
+  dp.startDate = "2016-01-01";
+  dp.init();
+</script>
+
+<script type="text/javascript">
+  var dp = new DayPilot.Calendar("dp");
+  dp.locale = "en-us";
+  dp.init();
+</script>
+
+DayPilot.Locale.register(
+  new DayPilot.Locale('en-us', 
+  {
+    'dayNames':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    'dayNamesShort':['Su','Mo','Tu','We','Th','Fr','Sa'],
+    'monthNames':['January','February','March','April','May','June','July','August','September','October','November','December'],
+    'monthNamesShort':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    'timePattern':'h:mm tt',
+    'datePattern':'M/d/yyyy',
+    'dateTimePattern':'M/d/yyyy h:mm tt',
+    'timeFormat':'Clock12Hours',
+    'weekStarts':0
+  }
+));
+
+<div id="nav"></div>
+
+<script type="text/javascript">
+  var nav = new DayPilot.Navigator("nav");
+  nav.showMonths = 3;
+  nav.skipMonths = 3;
+  nav.selectMode = "week";
+  nav.onTimeRangeSelected = function(args) {
+      dp.startDate = args.day;
+      dp.update();
+      loadEvents();
+  };
+  nav.init();
+</script>
+
+<script type="text/javascript">
+  var dp = new DayPilot.Calendar("dp");
+  dp.viewType = "Week";
+  dp.theme = "calendar_transparent";
+  dp.init();
+</script>

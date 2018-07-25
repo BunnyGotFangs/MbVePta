@@ -1,0 +1,17 @@
+body    {
+    background-color: white;
+    background-image: 960px;
+    width:960px;
+    padding:50px;
+    border:20px;
+    margin:20px;
+    color: rgb(31, 110, 141);
+    font-size: 18px;
+    line-height: 27px;
+}   
+
+ 
+
+.alert
+{text-align: center;
+} 
