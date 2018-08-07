@@ -2,10 +2,12 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>MVP Insight Scheduler</title>
+  <title>MVP Del Cal</title>
 
   <link rel='stylesheet' type='text/css' href='libs/css/smoothness/jquery-ui-1.8.11.custom.css' />
   <link rel='stylesheet' type='text/css' href='jquery.weekcalendar.css' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <style type='text/css'>
   body {
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
@@ -107,11 +109,45 @@
 </script>
 </head>
 <body>
-  <h1>Tracking Calendar</h1>
+    <div container="Nav">
+     
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" src="aassets/Insight_Logo.png" target="_blank">
+                <img src="images/TT.png" width="250" height="100" class="d-inline-block align-top">
+            </a>
 
-  <p class="description">
-    Please Note ***. Events are static at this time.
-  </p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ml-auto">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class= "nav-item">
+                            <a class="nav-link" href="carrier02.html">Carrier Input</a>
+                        </li>
+                </ul>        
+                  <ul class="nav navbar-nav navbar-right">
+                                <li class= "nav-item">
+                                    <a class="nav-link" href="https://www.mvplogistics.com/">MVP</a>
+                                </li>
+                        </ul>        
+                        <ul class="nav navbar-nav navbar-right">
+                                <li class= "nav-item">
+                                    <a class="nav-link" href="index.html">Log In</a>
+                                </li>
+                        </ul>        
+                        <ul class="nav navbar-nav navbar-right">
+                                <li class= "nav-item">
+                                    <a class="nav-link" href="https://www.mvplogistics.com/contact/">Request a Quote</a>
+                                </li>
+                        </ul>
+                </ul>
+
+            </div>
+
+        </nav>
 
   <div id="calendar"></div>
 </body>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Carrier Input</title>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- Moment.js Reference -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Train Time -->
+  <div class="container">
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="background-color: rgb(38, 127, 161); color: white">
+      <h1 class="text-center">Carrier Delivery Information</h1>
+      <h3 class="text-center">Please scroll down and complete all information</h3>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <!-- Train Schedule -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <strong>Carrier Information</strong>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-hover" id='train-table'>
+              <thead>
+                <tr>
+                  <th>Carrier</th>
+                  <th>PO</th>
+                  <th>BOL</th>
+                  <th>Item</th>
+                  <th>Count</th>
+                  <th>Date1</th>
+                  <th>Time</th>
+                  <th>Location1</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Add Train  -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <strong>Add Delivery</strong>
+            </h3>
+          </div>
+          <div class="panel-body">
+
+            <!-- Entry Form -->
+            <form>
+              <div class="form-group">
+                <label for="carrier-name-input">Carrier</label>
+                <input type="text" class="form-control" id="train-name-input">
+              </div>
+              <div class="form-group">
+                <label for="po-input">PO</label>
+                <input type="text" class="form-control" id="destination-input">
+              </div>
+              <div class="form-group">
+                <label for="bol-input">BOL</label>
+                <input type="text" class="form-control" id="first-train-input">
+              </div>
+              <div class="form-group">
+                <label for="item-input">Item</label>
+                <input type="text" class="form-control" id="frequency-input">
+              </div>
+              <div class="form-group">
+                <label for="count-input">Count</label>
+                <input type="text" class="form-control" id="frequency-input">
+              </div>
+              <div class="form-group">
+                <label for="start-input">Start Date</label>
+                <input type="date" class="form-control" id="inputPassword4" placeholder="MM/DD/YYYY">
+            </div>
+              <div class="form-group">
+                <label for="time-input">Time (HH:mm - military time)</label>
+                <input type="text" class="form-control" id="frequency-input">
+              </div>
+              <div class="form-group">
+                <label for="location-input">Location</label>
+                  <select id="state">
+                  <option>Inver Grove Heights</option>
+                  <option>Eagan</option>
+                  <option>Other</option>
+                  </select>
+              </div>
+              <button type="submit" class="btn btn-primary" id="add-delivery-btn">Submit</button>
+            </br>
+          </br>
+              <div>
+              <a type="submit" class="btn btn-primary"  href="calendar.html" id="gotocal-btn">Calendar</a>
+              </div>  
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Script -->
+  <script src="traintime-logic.js"></script>
+
+</body>
+
+</html>
